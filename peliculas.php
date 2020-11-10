@@ -22,7 +22,7 @@
     </head>
     <body>
         <?php
-
+         
         if (isset($_GET['genero'])) {
              $peliculas = $_GET['genero'];
              if(!isset($_GET['pagina'])){
@@ -31,6 +31,7 @@
         
          }
          require("header.php");
+         
          $consulta = mysqli_query($conexion, "SELECT * FROM movies where (genero like '%$peliculas%')");
          $peliculas_x_pag = 8;
          $total_peliculas = mysqli_num_rows($consulta);
@@ -61,6 +62,21 @@
               </nav>
                 </div>
                <?php if (isset($_GET['pagina'])) {
+                    $select=mysqli_query($conexion,"SELECT * FROM movies");
+                    $total= mysqli_fetch_array($select);
+                    $totalJson = json_encode($total);
+                    $json = fopen("peliculas.json", "w") or
+                       die("Problemas al generar Json");
+                    fwrite($json, $totalJson);
+                    fclose($json);
+                    $destacados=mysqli_query($conexion,"SELECT * FROM movies WHERE puntaje BETWEEN 7 and 10");
+                    $archivo=fopen("destacados.txt","w") or die("Problemas al crear archivo txt");
+                    $txt="";
+                    while($r=mysqli_fetch_array($destacados)){
+                          $txt =$txt.$r['id_pelicula']."; ".$r['titulo']."; ".$r['genero']."; ".$r['duracion']."; ".$r['descripcion']."; ".$r['puntaje']."; ".$r['imagen']."; ".$r['anio']."; ".$r['pelicula']."; ".$r['trailer']."\n";
+                    }
+                    fwrite($archivo, $txt);
+                    fclose($archivo);
                     $iniciar = ($_GET['pagina'] - 1) * $peliculas_x_pag;
                     $consulta2 = mysqli_query($conexion, "SELECT * FROM movies WHERE (genero like '%$peliculas%') ORDER BY anio DESC limit $iniciar,$peliculas_x_pag");
                     while ($r = mysqli_fetch_array($consulta2)) { ?>
