@@ -1,22 +1,23 @@
  <?php
-        $nombre=$_REQUEST['nombre'];
-        $apellido=$_REQUEST['apellido'];
-        $user=$_REQUEST['mail'];
-        $pass=sha1($_REQUEST['contr']);
-        $grupo=2;
-        require("conexion.php");
+   require("conexion.php");
+   $consulta=mysqli_query($conexion,"SELECT id_grupo FROM grupos WHERE nombre_grupo='ESPECTADOR'");
+   while($r=mysqli_fetch_array($consulta)){$id_grupo=$r['id_grupo'];}
+   $nombre_usuario=$_REQUEST['nombre_usuario'];
+   $email=$_REQUEST['mail'];
+   $password=sha1($_REQUEST['contr']);
         if (isset($_REQUEST['registrado']) && !empty($_REQUEST['registrado'])) {
-          if (!empty($nombre) && !empty($apellido) && !empty($user) && !empty($pass)) {
-          $registros=mysqli_query($conexion,"select mail from usuarios where mail='$user'")or die("error de base de datos");
+            $registros=mysqli_query($conexion,"SELECT mail FROM usuarios WHERE mail='$email'");
             if(mysqli_num_rows($registros)>0){ 
                   echo "<script>alert('el mail ingresado esta en uso, intente con otro');</script>";          
                   require("registrarse.html");
             }else{
-                mysqli_query($conexion,"insert into usuarios(nombre,apellido,mail,contr,id_grupo)values 
-                  ('$nombre','$apellido','$user','$pass',$grupo)")or die("error de base de datos");
-                  echo "<script>alert('fue registrado con exito!');</script>";
-                  require("login.html");
-           }
-           }
+                $insertar=mysqli_query($conexion,"INSERT INTO usuarios VALUES(00,'$nombre_usuario','$email','$password',NULL)");
+                $consulta=mysqli_query($conexion,"SELECT id_usuario FROM usuarios WHERE mail='$email'");
+                 while ($r=mysqli_fetch_array($consulta)) {$id_usuario=$r['id_usuario'];}
+                 $insert2=mysqli_query($conexion,"INSERT INTO grupos_usuarios VALUES($id_grupo,$id_usuario)");
+                 echo "<script>alert('fue registrado con exito!');</script>";
+                 require("login.html");
+            }
+          
          }
   ?>
