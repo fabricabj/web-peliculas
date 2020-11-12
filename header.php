@@ -42,21 +42,12 @@ function CerrarSession()
                 <a id="inicio" style="color:white" class="nav-link" href="index.php">Inicio</a>
               </li>
               <li class="dropdown">
-                <a id="categoria" style="color:white" class="nav-link  dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categorias</a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <form action="peliculas.php?genero=fantasia" method="POST">
-                    <button id="fantasia" type="submit" class="dropdown-item">Fantasia</button>
-                  </form>
-                  <form action="peliculas.php?genero=terror" method="POST">
-                    <button id="terror" type="submit" class="dropdown-item">Terror</button>
-                  </form>
-                  <form action="peliculas.php?genero=accion" method="POST">
-                    <button id="accion" type="submit" class="dropdown-item">Accion</button>
-                  </form>
-                </div>
+              <li class="nav-item">
+                <a id="categoria" style="color:white" class="nav-link" href="categorias.php">Categorias</a>
+              </li>
               </li>
               <li class="nav-item">
-                <a id="contacto" style="color:white" class="nav-link" href="contacto.php">Contacto</a>
+                <a id="solicitudes" style="color:white" class="nav-link" href="solicitudes.php">Solicitar Peliculas</a>
               </li>
             </ul>
           </div>
@@ -111,6 +102,32 @@ function CerrarSession()
             <?php endif; ?>
           </div>
         </nav>
+        <form action="buscar.php" method="POST">
+    
+        <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <select style="width:160px;background:black;color:white" class="form-control" id="selectTipo" name="genero">
+						   <option>todo</option>
+						   <option>Fantasia</option>
+						   <option>Terror</option>
+						   <option>accion</option>
+						   <option>Aventura</option>
+						   <option>Crimen</option>
+               <option>Ciencia Ficcion</option>
+               <option>Drama</option>
+						   <option>Comedia</option>
+						   <option>Romance</option>
+						</select>
+    
+  </div>
+  <input id="titulo" name="titulo" style="background:black;color:white" type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="ingrese la pelicula a buscar">
+  <div class="input-group-append">
+    <button style="border-color: white" class="btn btn-outline-dark" type="submit" id="button-addon2"><i class="fas fa-search"></i></button>
+  </div>
+
+</div>
+        
+        </form>
       </div>
     </div>
     <hr style="background:red;height:2px">

@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
     <title>Inicio</title>
 </head>
 <body>
@@ -128,7 +129,11 @@
           <div class="scrollmenu">
                <?php
                  $destacados= mysqli_query($conexion,"SELECT * FROM movies WHERE puntaje BETWEEN 7 and 10");
-                      while ($r=mysqli_fetch_array($destacados)) {?>
+                    $archivo=fopen("destacados.txt","w") or die("Problemas al crear archivo txt");
+                    $txt="";
+                    
+                      while ($r=mysqli_fetch_array($destacados)) {
+                        $txt =$txt.$r['id_pelicula']."; ".$r['titulo']."; ".$r['genero']."; ".$r['duracion']."; ".$r['descripcion']."; ".$r['puntaje']."; ".$r['imagen']."; ".$r['anio']."\n";?>
                            <div align="center" style="padding:1%;display:inline-block">
                                <div class="card" style="width: 12.5rem;background:#212121;color:white">
                                       <img src="<?php echo $r['imagen'];?>" class="card-img-top">
@@ -145,6 +150,8 @@
                            </div>
                            <?php
                        }
+                       fwrite($archivo, $txt);
+                    fclose($archivo);
                       ?>
           </div>
      </div>
