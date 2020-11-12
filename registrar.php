@@ -5,8 +5,8 @@
    $email=$_REQUEST['mail'];
    $password=sha1($_REQUEST['contr']);
         if (isset($_REQUEST['registrado']) && !empty($_REQUEST['registrado'])) {
-            $registros=mysqli_query($conexion,"SELECT validacionmail('$email')");
-            if($registros){ 
+            $registros=mysqli_query($conexion,"SELECT mail FROM usuarios WHERE mail='$email'");
+            if(mysqli_num_rows($registros)>0){ 
                   echo "<script>alert('el mail ingresado esta en uso, intente con otro');</script>";          
                   require("registrarse.html");
             }else{
