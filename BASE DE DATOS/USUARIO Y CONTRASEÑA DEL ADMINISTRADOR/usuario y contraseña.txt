@@ -1,6 +1,6 @@
      
 
 
-     usuario: tuspeliscf
+     usuario: administrador@gmail.com
      
-     contraseña: fabri1234
+     contraseña: admin1234

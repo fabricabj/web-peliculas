@@ -40,7 +40,16 @@
                                           <a class="btn btn-dark card-text" href="#" onclick="lista();"><i class="fas fa-bookmark"></i>       Añadir a la lista</a>
                                  <?php  }?>
                                 <div>
-                                 
+                                 <?php 
+                                    if (isset($_SESSION['login']) && $_SESSION['login']>0) {
+                                       if($idgrupo==1){
+                                  ?>    
+                                       <form method="GET" action="altaMod.php">
+                                          <button style="float: left;margin: 25px;border-radius:30px" type="submit" name="id_pelicula" value="<?php  echo $r['id_pelicula'];?>" class="btn btn-dark"><i class="fas fa-pencil-alt"></i></button>
+                                       </form>
+                                       <a style="float: left;margin: 25px;border-radius:30px" class="btn btn-dark" href="#" data-toggle="modal" data-target="#info<?php echo $r['id_pelicula'];?>"><i class="fas fa-trash-alt"></i></a>
+                               <?php }
+                                 }?>
                                    <div style="padding-top:25px;">
                                        <a title="más informacion" style="float:right;margin-right:25px;border-radius:30px" class="btn btn-dark card-text" href="#" data-toggle="modal" data-target="#info<?php echo $r['id_pelicula'];?>"><i class="fas fa-info-circle"></i></a>
                                    </div>     
@@ -69,7 +78,7 @@
                                             <h6><?php echo $r['descripcion'];?></h6>
 		                                  </div>
                                       <?php if (isset($_SESSION['login']) && $_SESSION['login']>0) { 
-                                               if($nombrePermiso=="baja pelicula"){ ?>
+                                               if($idgrupo==1){ ?>
                                                     <div class="col-md-6">
                                                        <br>
                                                        <a class="btn btn-dark" href="ABM.php?borrar=<?php echo $r['id_pelicula']; ?>">Eliminar</a>
@@ -140,7 +149,6 @@
           </div>
      </div>
    </div>
-   <br><br><br><br><br>
    <?php 
        if (isset($_GET['id_pelicula']) && (isset($_GET['estado']) && $_GET['estado']==1)) {
           $idPelicula=$_GET['id_pelicula'];
