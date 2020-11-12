@@ -46,6 +46,6 @@
 			}
 		}
     </script>
-
+    <?php require("footer.html");?>
  </body>
 </html>

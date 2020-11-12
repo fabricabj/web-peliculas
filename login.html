@@ -36,9 +36,9 @@
 <body>
   <div class="container">
     <div class="row">
-      <div class="col-md-12 invitado" style="padding-top:10px;">
+     <!-- <div class="col-md-12 invitado" style="padding-top:10px;">
         <a class="btn" style="float:right" href="login.php?invitado=1">Visistar pagina</a>
-      </div>
+      </div>-->
       <div class="col-md-12" align="center">
         <img src="logo.png" style="width:150px;height:70px;border-radius:20px">
       </div>
@@ -63,37 +63,13 @@
               <div class="form-group">
                 <button type="submit" name="ingresar" value="ingresar" class="btn btn-primary">Ingresar</button>
               </div>
-              <a style="color:white" href="#" data-toggle="modal" data-target="#recuperar">¿Olvidaste tu contraseña?</a>
+            
             </form>
           </div>
         </div>
       </div>
 
     </div>
-  </div>
-  <div data-backdrop="static"  class="modal fade" id="recuperar">
-    <div class="col-md-12 modal-dialog" >
-        <div class="modal-content">
-            <div class="modal-header" style="background:#212121;color:white">
-                <h4 class="modal-title">Recuperar contraseña</h4>
-                <button style="color:white" type="button" class="close" data-dismiss="modal">X</button>
-            </div>
-            
-              <div class="modal-body" style="background:#121212;color:white">
-                <form action="InicioRecuperar.php" method="POST">
-
-                  <div class="form-row">
-                    <div class="form-group col-md-12">
-                      <label style="float:left" for="inputEmail4">ingrese su email</label>
-                      <input class="form-control" type="email" name="usuario" id="usuario" required placeholder="ejemplo@ejemplo.com">
-                    </div>
-                  </div>
-                  <button type="submit" class="btn btn-dark" name="send" value="send" style="width: 100%;">buscar</button>
-                </form>
-              </div>
-            
-        </div>
-      </div>
   </div>
     
   <div style="padding-top:100px">

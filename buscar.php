@@ -33,13 +33,7 @@
                         <p align="center" class="card-text"><?php echo $r['titulo']; ?></p>
                     </div>
                     <br>
-                    <?php if (isset($_SESSION['login']) && $_SESSION['login'] > 0) { ?>
-                        <a style="botton:0%;position:absolute" class="btn btn-dark card-text" href="peliculas.php?genero=<?php echo $peliculas;?>&pagina=<?php echo $_GET['pagina'];?>&id_pelicula=<?php echo $r['id_pelicula']; ?>&estado=4"><i class="fas fa-bookmark"></i></a>
-                        <a class="btn btn-dark card-text" href="peliculas.php?id_pelicula=<?php echo $r['id_pelicula']; ?>&genero=<?php echo $peliculas; ?>&estado=1"><i class="fas fa-bookmark"></i> Añadir a la lista</a>
-                    <?php } else { ?>
-                        <a style="botton:0%;position:absolute" class="btn btn-dark card-text" href="#" onclick="lista();"><i class="fas fa-bookmark"></i></a>
-                        <a class="btn btn-dark card-text" href="#" onclick="lista();"><i class="fas fa-bookmark"></i> Añadir a la lista</a>
-                    <?php  } ?>
+                   
                     <div>
                         <?php
                         if (isset($_SESSION['login']) && $_SESSION['login'] > 0) {

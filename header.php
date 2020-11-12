@@ -82,17 +82,7 @@ function CerrarSession()
                       </li>
                       <li>
                         <a id="lista" style="color:white" title="mi lista" href="lista.php" class="btn"><i style="font-size:20px" class="fas fa-bookmark"></i> Mi lista
-                          <?php if (isset($_SESSION['login'])) {
-                            $idUser = $_SESSION['login'];
-                            $consulta = mysqli_query($conexion, "SELECT m.id_pelicula, m.titulo,m.puntaje,
-                             m.imagen,um.id_usuario from movies AS m,usuarios_movies AS um
-                             where m.id_pelicula=um.id_pelicula and um.id_usuario='$idUser'");
-                            $total_lista = mysqli_num_rows($consulta);
-                            if ($total_lista > 0) {
-                              echo "<button style='border-radius:40px;background:yellow;color:red'>" . $total_lista . "</button>";
-                            }
-                          }
-                          ?>
+                          
                         </a>
                       </li>
                     </ul>

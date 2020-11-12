@@ -19,7 +19,7 @@ session_start();
 		$dato = strtoupper($_REQUEST['dato']);
 		require("conexion.php");
         $cant = 0;
-		$sql = "SELECT * FROM movies WHERE (titulo LIKE'$dato%')";
+		$sql = "SELECT * FROM deletepeliculas WHERE (titulo LIKE'$dato%')";
         $result = mysqli_query($conexion, $sql);
 		$cant = mysqli_num_rows($result);
         mysqli_close($conexion);
@@ -42,7 +42,13 @@ session_start();
 				</td>
 				<td>
 					<?php echo $row['anio'];?>
-                </td>
+				</td>
+				<!--<td>
+				   <form method="POST" action="altanew.php">
+					   <input type="text" id="id_pelicula" name="id_pelicula" value="<?php echo $row['id_pelicula'];?>" hidden>
+                      <button  class="btn btn-dark" style="margin-top: 3%;width: 100%;" name="alta" value="alta"><i class="far fa-arrow-alt-circle-up"></i>Alta pelicula</button>
+                  </form>    
+				</td>-->
             </tr>
                 <?php }?>
 	</tbody>

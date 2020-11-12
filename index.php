@@ -128,7 +128,7 @@
       <h2 style="color:white;padding-top:40px">Destacados</h2>
           <div class="scrollmenu">
                <?php
-                 $destacados= mysqli_query($conexion,"SELECT * FROM movies WHERE puntaje BETWEEN 7 and 10");
+                 $destacados= mysqli_query($conexion,"CALL destacados();");
                     $archivo=fopen("destacados.txt","w") or die("Problemas al crear archivo txt");
                     $txt="";
                     
@@ -139,13 +139,7 @@
                                       <img src="<?php echo $r['imagen'];?>" class="card-img-top">
                                       <p><?php echo "<i class='fas fa-star'></i>".$r['puntaje'];?></p>
                                       <br>
-                                      <?php if (isset($_SESSION['login']) && $_SESSION['login']>0) { ?>
-                                                   <a style="botton:0%;position:absolute" class="btn btn-dark card-text" href="index.php?id_pelicula=<?php echo $r['id_pelicula'];?>&estado=1"><i class="fas fa-bookmark"></i></a>
-                                                   <a class="btn btn-dark card-text" href="index.php?id_pelicula=<?php echo $r['id_pelicula'];?>&estado=1"><i class="fas fa-bookmark"></i>       Añadir a la lista</a>
-                                      <?php }else{ ?>
-                                                    <a style="botton:0%;position:absolute" class="btn btn-dark card-text" href="#" onclick="lista();"><i class="fas fa-bookmark"></i></a>
-                                                    <a class="btn btn-dark card-text" href="#" onclick="lista();"><i class="fas fa-bookmark"></i>       Añadir a la lista</a>
-                                     <?php  }?>
+                                      
                                </div> 
                            </div>
                            <?php

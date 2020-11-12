@@ -10,7 +10,7 @@
                   echo "<script>alert('el mail ingresado esta en uso, intente con otro');</script>";          
                   require("registrarse.html");
             }else{
-                $insertar=mysqli_query($conexion,"INSERT INTO usuarios VALUES(00,'$nombre','$apellido','$email','$password')");
+                $insertar=mysqli_query($conexion,"INSERT INTO usuarios VALUES(00,'$nombre','$apellido','$email','$password',2)");
                  echo "<script>alert('fue registrado con exito!');</script>";
                  require("login.html");
             }
